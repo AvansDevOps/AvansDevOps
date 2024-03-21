@@ -1,5 +1,7 @@
 package project;
 
+import backlogItemState.BacklogItemState;
+import backlogItemState.ToDo;
 import threads.Thread;
 import users.User;
 
@@ -11,10 +13,14 @@ public class BacklogItem {
     private String title;
     private String description;
     private User user;
+    private BacklogItemState state;
 
     public BacklogItem(String title, String description) {
         this.title = title;
         this.description = description;
+        state = new ToDo();
+        
+
     }
 
     public void addThread(Thread thread) {
@@ -29,9 +35,15 @@ public class BacklogItem {
         this.activities.add(activity);
     }
 
-    // set states of the backlog item
-    public void ToDo() {
-        // set state to "To Do"
-        
+    public void getCurrentState() {
+        state.getCurrentState();
     }
+
+    // set states of the backlog item
+
+    public void setState(BacklogItemState state) {
+        this.state = state;
+    }
+
+
 }

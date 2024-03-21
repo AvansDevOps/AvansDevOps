@@ -1,7 +1,9 @@
 package org.example.app;
 
 
+import backlogItemState.*;
 import project.Backlog;
+import project.BacklogItem;
 import project.Project;
 import reports.FileType;
 import reports.Report;
@@ -71,6 +73,22 @@ public class Main {
         System.out.println("");
         System.out.println(backlogItemFailed);
         //
+        System.out.println("");
+        // creating backlogItems
+        BacklogItem backlogItem = new BacklogItem("This is a backlog item", "This is a description");
+
+        backlogItem.getCurrentState();
+        backlogItem.setState(new Doing());
+        backlogItem.getCurrentState();
+        backlogItem.setState(new ReadyForTesting());
+        backlogItem.getCurrentState();
+        backlogItem.setState(new Testing());
+        backlogItem.getCurrentState();
+        backlogItem.setState(new Tested());
+        backlogItem.getCurrentState();
+        backlogItem.setState(new Done());
+
+
 
 
 

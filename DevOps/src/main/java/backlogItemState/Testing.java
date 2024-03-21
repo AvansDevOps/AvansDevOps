@@ -1,6 +1,6 @@
 package backlogItemState;
 
-public class Testing implements BacklogItemState {
+public class Testing extends BacklogItemState {
     @Override
     public void toDo() {
         System.out.println("Moving backlog item to the ToDo state");
@@ -30,4 +30,10 @@ public class Testing implements BacklogItemState {
     public void done() {
         System.out.println("Moving backlog item to the Done state");
     }
+
+    @Override
+    public void getCurrentState() {
+        System.out.println("Backlog item is in the Testing state");
+    }
+
 }

@@ -1,13 +1,20 @@
 package backlogItemState;
 
-public interface BacklogItemState {
+public abstract class BacklogItemState {
 
-    public void toDo();
-    public void doing();
-    public void readyForTesting();
-    public void testing();
-    public void tested();
-    public void done();
+    public abstract void toDo();
+
+    public abstract void doing();
+
+    public abstract void readyForTesting();
+
+    public abstract void testing();
+
+    public abstract void tested();
+
+    public abstract void done();
+
+    public abstract void getCurrentState();
 
 
 

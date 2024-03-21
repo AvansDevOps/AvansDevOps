@@ -1,9 +1,14 @@
 package org.example.app;
 
 
+import project.Backlog;
+import project.Project;
 import reports.FileType;
 import reports.Report;
 import sprintRelease.*;
+import threads.Comment;
+import threads.Forum;
+import threads.Thread;
 import users.Developer;
 import users.ScrumMaster;
 import users.User;
@@ -52,6 +57,24 @@ public class Main {
         Report report = new Report("Sprint 1 report", 1.0, LocalDate.now(), sprint);
         report.generateReport(FileType.PDF);
         report.generateReport(FileType.PNG);
+
+
+        // generating a forum thread comment
+        Forum forum = new Forum(sprint);
+        Thread backlogItemFailed = new Thread("This is a thread", "test");
+        forum.addThread(backlogItemFailed);
+
+        Comment comment = new Comment("This is a comment", user1);
+        Comment comment2 = new Comment("This is a comment", user2);
+        backlogItemFailed.addComment(comment);
+        backlogItemFailed.addComment(comment2);
+        System.out.println("");
+        System.out.println(backlogItemFailed);
+        //
+
+
+
+
 
 
 

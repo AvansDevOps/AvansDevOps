@@ -15,6 +15,7 @@ public class Thread {
         this.title = title;
         this.content = content;
         this.comments = new ArrayList<>();
+        this.isActive = true;
     }
 
 
@@ -36,5 +37,11 @@ public class Thread {
     public void removeComment(Comment comment) {
         if (!isActive) throw new IllegalStateException("Thread is not active");
         comments.remove(comment);
+    }
+
+    @Override
+    public String toString() {
+        return "Thread: " + title + "\n" +
+                "comments=" + comments;
     }
 }

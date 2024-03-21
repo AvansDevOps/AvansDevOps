@@ -1,7 +1,8 @@
 package threads;
 
-import org.example.app.Sprint;
+import project.Sprint;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Forum {
@@ -11,6 +12,7 @@ public class Forum {
 
     public Forum(Sprint sprint) {
         this.sprint = sprint;
+        this.threads = new ArrayList<>();
     }
 
 

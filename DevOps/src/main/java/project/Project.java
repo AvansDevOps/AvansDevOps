@@ -1,4 +1,4 @@
-package org.example.app;
+package project;
 
 public class Project {
     private String name;

@@ -1,6 +1,6 @@
 package users;
 
-import org.example.app.Sprint;
+import project.Sprint;
 
 import java.util.ArrayList;
 import java.util.List;

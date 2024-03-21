@@ -1,6 +1,6 @@
 package sprintRelease;
 
-import org.example.app.Sprint;
+import project.Sprint;
 
 import java.time.LocalDate;
 

@@ -1,6 +1,6 @@
 package reports;
 
-import org.example.app.Sprint;
+import project.Sprint;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package org.example.app;
+package project;
 
 import java.util.ArrayList;
 import java.util.List;

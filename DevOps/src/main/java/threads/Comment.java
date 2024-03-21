@@ -11,4 +11,9 @@ public class Comment {
         this.user = user;
     }
 
+    @Override
+    public String toString() {
+        return "Comment by: " + user + "\n" +
+                 comment + '\'' + "\n";
+    }
 }

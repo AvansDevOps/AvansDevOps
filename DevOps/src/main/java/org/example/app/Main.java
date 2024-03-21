@@ -1,6 +1,8 @@
 package org.example.app;
 
 
+import reports.FileType;
+import reports.Report;
 import sprintRelease.*;
 import users.Developer;
 import users.ScrumMaster;
@@ -46,6 +48,10 @@ public class Main {
         VisitorStartDeployment visitor = new VisitorStartDeployment();
         mainFolder.acceptVisitor(visitor);
 
+        // generating a report Factory pattern
+        Report report = new Report("Sprint 1 report", 1.0, LocalDate.now(), sprint);
+        report.generateReport(FileType.PDF);
+        report.generateReport(FileType.PNG);
 
 
 
@@ -60,8 +66,6 @@ public class Main {
 
 
 
-
-        System.out.println(project);
 
 
 

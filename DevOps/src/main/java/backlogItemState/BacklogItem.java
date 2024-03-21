@@ -1,15 +1,20 @@
-package project;
+package backlogItemState;
 
 import backlogItemState.BacklogItemState;
 import backlogItemState.ToDo;
+import observers.Observable;
+import observers.Observer;
+import project.Activity;
 import threads.Thread;
 import users.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class BacklogItem {
+public class BacklogItem implements Observable {
     private List<Thread> thread;
     private List<Activity> activities;
+    private List<Observer> observers = new ArrayList<>();
     private String title;
     private String description;
     private User user;
@@ -19,8 +24,6 @@ public class BacklogItem {
         this.title = title;
         this.description = description;
         state = new ToDo();
-        
-
     }
 
     public void addThread(Thread thread) {
@@ -45,5 +48,23 @@ public class BacklogItem {
         this.state = state;
     }
 
+    // observables methods
+    @Override
+    public void subscribe(Observer observer) {
+        observers.add(observer);
+    }
 
+    @Override
+    public void unsubscribe(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        if (state instanceof Done){
+            for (Observer observer : observers) {
+                observer.sendNotification(this);
+            }
+        }
+    }
 }

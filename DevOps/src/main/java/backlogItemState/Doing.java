@@ -1,11 +1,11 @@
 package backlogItemState;
 
 public class Doing extends BacklogItemState {
+
     @Override
     public void toDo() {
         System.out.println("Moving backlog item to the ToDo state");
     }
-
     @Override
     public void doing() {
         System.out.println("Backlog item is already in the Doing state");

@@ -1,6 +1,11 @@
 package backlogItemState;
 
 public class ReadyForTesting extends BacklogItemState {
+
+    public ReadyForTesting() {
+        System.out.println("Backlog item is in the Ready for Testing state");
+    }
+
     @Override
     public void toDo() {
         System.out.println("Moving backlog item to the ToDo state");

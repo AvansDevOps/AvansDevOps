@@ -12,7 +12,9 @@ public abstract class Sprint {
     private LocalDate endDate;
     private List<User> teamMembers;
 
-
+    public List<User> getTeamMembers() {
+        return teamMembers;
+    }
 
     public Sprint(String name, LocalDate startDate, LocalDate endDate) {
         this.name = name;

@@ -5,6 +5,7 @@ import backlogItemState.ToDo;
 import observers.Observable;
 import observers.Observer;
 import project.Activity;
+import project.Sprint;
 import threads.Thread;
 import users.User;
 
@@ -20,9 +21,17 @@ public class BacklogItem implements Observable {
     private User user;
     private BacklogItemState state;
 
-    public BacklogItem(String title, String description) {
+    public Sprint getSprint() {
+        return sprint;
+    }
+
+    private Sprint sprint;
+
+
+    public BacklogItem(String title, String description, Sprint sprint) {
         this.title = title;
         this.description = description;
+        this.sprint = sprint;
         state = new ToDo();
     }
 
@@ -46,6 +55,7 @@ public class BacklogItem implements Observable {
 
     public void setState(BacklogItemState state) {
         this.state = state;
+        notifyObservers();
     }
 
     // observables methods
@@ -61,10 +71,12 @@ public class BacklogItem implements Observable {
 
     @Override
     public void notifyObservers() {
+        // todo; send notification based on the state to the correct team members
         if (state instanceof Done){
             for (Observer observer : observers) {
-                observer.sendNotification(this);
+                observer.sendNotification(this, "Backlog item has finished!");
             }
         }
+
     }
 }

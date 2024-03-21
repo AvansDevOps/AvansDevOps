@@ -1,10 +1,11 @@
 package notification;
 
+import users.User;
+
 public class SMSNotificationBehaviourAdapter implements NotificationBehaviour {
+
     @Override
-    public void sendNotification(String message) {
-        System.out.println("SMS notification sent: " + message);
+    public void sendNotification(User receiver, String message) {
+        System.out.println("SMS notification sent to " + receiver.getName() + ": " + message);
     }
-
-
 }

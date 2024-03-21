@@ -1,6 +1,15 @@
 package backlogItemState;
 
 public class Done extends BacklogItemState {
+
+    public Done() {
+        System.out.println("Backlog item is in the Done state");
+
+    }
+
+
+
+
     @Override
     public void toDo() {
         System.out.println("Moving backlog item to the ToDo state");

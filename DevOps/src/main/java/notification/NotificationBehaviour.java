@@ -1,6 +1,8 @@
 package notification;
 
+import users.User;
+
 public interface NotificationBehaviour {
-    public void sendNotification(String message);
+    public void sendNotification(User receiver , String message);
 
 }

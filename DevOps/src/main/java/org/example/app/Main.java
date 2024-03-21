@@ -80,10 +80,12 @@ public class Main {
         System.out.println(backlogItemFailed);
         //
         System.out.println("");
-        // creating backlogItems
-        BacklogItem backlogItem = new BacklogItem("This is a backlog item", "This is a description");
 
-        backlogItem.setState(new ReadyForTesting());
+
+        // creating backlogItems
+        BacklogItem backlogItem = new BacklogItem("This is a backlog item", "This is a description", sprint);
+
+
 //        backlogItem.getCurrentState();
 //        backlogItem.setState(new Doing());
 //        backlogItem.getCurrentState();
@@ -98,12 +100,17 @@ public class Main {
 
 
         // creating notification //observer pattern
+
+
         Observer subscriber1 = new Subscriber();
         backlogItem.subscribe(subscriber1);
-        backlogItem.notifyObservers();
+        //backlogItem.unsubscribe(subscriber1);
+        backlogItem.setState(new Done());
+
         backlogItem.unsubscribe(subscriber1);
 
-        subscriber1.sendNotification(backlogItem);
+
+
 
 
 

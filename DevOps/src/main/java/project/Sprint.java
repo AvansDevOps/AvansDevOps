@@ -75,6 +75,7 @@ public abstract class Sprint {
         if (LocalDate.now().isAfter(this.startDate)){
             throw new IllegalArgumentException("Sprint cannot be edited while its started!");
         }
+
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -91,4 +92,6 @@ public abstract class Sprint {
                 ", teamMembers=" + teamMembers +
                 '}';
     }
+
+
 }

@@ -53,13 +53,6 @@ public class ScrumMaster extends User{
         }
     }
 
-    public Sprint createSprintRelease(String name, LocalDate startDate, LocalDate endDate) {
-        return new SprintReview(name, startDate, endDate);
-    }
-    public Sprint createSprintRelease(SprintRelease sprintRelease) {
-        return new SprintRelease(sprintRelease.getName(), sprintRelease.getStartDate(), sprintRelease.getEndDate());
-    }
-
     public void cancelSprint(Sprint sprint) {
         sprint.cancelSprint();
     }

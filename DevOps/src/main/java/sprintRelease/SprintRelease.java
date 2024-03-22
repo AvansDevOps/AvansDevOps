@@ -20,23 +20,24 @@ public class SprintRelease extends Sprint {
         deploymentThread = new Thread(() -> {
             System.out.println("Project pipeline is in progress and will be deployed soon:");
             try {
+                deploymentThread.start();
                 System.out.println(this.deploymentThread.getState());
-                deploymentThread.wait(1000);
-                System.out.println("Deploying project...");
+                deploymentThread.wait(500);
                 this.component.acceptVisitor(this.visitor);
-
                 System.out.println("Project has been deployed successfully!" + "\n \n");
             } catch (Exception e) {
                 System.out.println("Error: " + "Pipeline progress has been cancelled" + "\n \n");
+                this.deploymentThread = null;
             }
         });
 
-        deploymentThread.start();
+
     }
 
     public void cancelDeployment() {
         if (deploymentThread != null) {
             deploymentThread.interrupt();
+            this.deploymentThread = null;
         }
         System.out.println("Deployment has been cancelled!");
     }
@@ -49,6 +50,18 @@ public class SprintRelease extends Sprint {
         this.visitor = visitor;
     }
 
+    public void getPipelineStatus(){
+        System.out.println("Pipeline status: " + this.deploymentThread.getState());
+    }
+
+    // return the deploymentThread state
+    public boolean threadIsRunning() {
+        if (deploymentThread != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
 

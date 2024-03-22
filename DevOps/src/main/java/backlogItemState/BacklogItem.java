@@ -4,6 +4,7 @@ import observers.Observable;
 import observers.Observer;
 import project.Activity;
 import project.Sprint;
+import sprintRelease.SprintRelease;
 import threads.Thread;
 import users.User;
 
@@ -52,6 +53,14 @@ public class BacklogItem implements Observable {
     // set states of the backlog item
 
     public void setState(BacklogItemState newState) {
+        if (sprint instanceof SprintRelease) {
+            SprintRelease sprintRelease = (SprintRelease) sprint;
+            if (sprintRelease.threadIsRunning()) {
+                System.out.println("Deployment is in progress, please wait until it is finished");
+                return;
+            }
+        }
+
         if (this.BacklogItemPreviousState != null){
             this.BacklogItemPreviousState = this.state;
         }

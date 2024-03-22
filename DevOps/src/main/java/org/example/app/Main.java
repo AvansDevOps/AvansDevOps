@@ -83,9 +83,9 @@ public class Main {
 
         // deploying the project (sprintRelease)®
         //sprint.deployProject();
-        sprint.deployProject();
-        sprint.cancelDeployment();
-        
+//        sprint.deployProject();
+//        sprint.cancelDeployment();
+
 
 
 
@@ -148,9 +148,12 @@ public class Main {
 
         // creating notification //observer pattern
 
+
         Observer subscriber1 = new Subscriber();
         backlogItem.subscribe(subscriber1);
         //backlogItem.unsubscribe(subscriber1);
+
+        //sprint.deployProject(); //to check if the error works when deploying a project while a backlogItem is changing a state
 
         //setting state of backlogItem
         backlogItem.setState(new Done());

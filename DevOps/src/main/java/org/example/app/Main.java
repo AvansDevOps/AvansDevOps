@@ -2,10 +2,7 @@ package org.example.app;
 
 
 import backlogItemState.*;
-import notification.EmailNotificationBehaviourAdapter;
-import notification.Notification;
-import notification.NotificationBehaviour;
-import notification.SMSNotificationBehaviourAdapter;
+import notification.*;
 import observers.Observer;
 import observers.Subscriber;
 import project.Activity;
@@ -148,7 +145,7 @@ public class Main {
 
         // creating notification //observer pattern
 
-        Observer subscriber1 = new Subscriber();
+        Observer subscriber1 = new Subscriber(new SMSNotificationBehaviourAdapter());
         backlogItem.subscribe(subscriber1);
         //backlogItem.unsubscribe(subscriber1);
 

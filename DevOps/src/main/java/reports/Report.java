@@ -27,11 +27,10 @@ public class Report {
 
     @Override
     public String toString() {
-        return "Report{" +
-                "reportName='" + reportName + '\'' +
-                ", version=" + version +
-                ", date=" + date +
-                ", sprint=" + sprint +
-                '}';
+        return "Report: " +
+                "reportName='" + reportName + '\'' + "\n" +
+                "version=" + version + "\n" +
+                "date=" + date  + "\n" +
+                "sprint=" + sprint  + "\n";
     }
 }

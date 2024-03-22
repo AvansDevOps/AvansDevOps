@@ -19,6 +19,16 @@ public class Backlog {
         }
     }
 
+    public List<Sprint> getSprints() {
+        return sprints;
+    }
+
+    public void createSprint(Sprint sprint) {
+        sprints.add(sprint);
+    }
+
+
+
     @Override
     public String toString() {
         return "Backlog{" +

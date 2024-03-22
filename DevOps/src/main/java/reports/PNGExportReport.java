@@ -12,8 +12,7 @@ public class PNGExportReport implements ExportReport{
 
     @Override
     public String toString() {
-        return "PNGExportReport{" +
-                "report=" + report +
-                '}';
+        return "PNGExportReport: " + "\n" +
+                 report + "\n";
     }
 }

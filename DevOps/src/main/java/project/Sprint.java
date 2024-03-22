@@ -71,6 +71,15 @@ public abstract class Sprint {
         this.name = name;
     }
 
+    public void editSprint(String name, LocalDate startDate, LocalDate endDate) {
+        if (LocalDate.now().isAfter(this.startDate)){
+            throw new IllegalArgumentException("Sprint cannot be edited while its started!");
+        }
+        this.name = name;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
 
 
     @Override

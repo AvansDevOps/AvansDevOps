@@ -9,6 +9,7 @@ public class Project {
     public Project(String name, String description) {
         this.name = name;
         this.description = description;
+        this.backlog = new Backlog();
     }
 
     public void setBacklog(Backlog backlog) {

@@ -13,6 +13,9 @@ public class Activity {
     }
 
     public void setDev(User dev) {
+        if (this.dev != null) {
+            throw new IllegalArgumentException("Developer is allrdy assigned to this activity");
+        }
         this.dev = dev;
     }
 

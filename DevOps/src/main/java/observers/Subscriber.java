@@ -1,24 +1,33 @@
 package observers;
 
-import backlogItemState.BacklogItem;
-import backlogItemState.BacklogItemState;
-import backlogItemState.ReadyForTesting;
-import backlogItemState.ToDo;
+import backlogItemState.*;
 import notification.EmailNotificationBehaviourAdapter;
 import notification.NotificationBehaviour;
 import notification.SMSNotificationBehaviourAdapter;
 import users.Developer;
+import users.ScrumMaster;
 import users.Tester;
 import users.User;
 
 import java.util.List;
 
 public class Subscriber implements Observer {
-private NotificationBehaviour emailNotification = new EmailNotificationBehaviourAdapter();
+private NotificationBehaviour emailNotification = new EmailNotificationBehaviourAdapter(); // strategy pattern, email/slack/sms notification
     @Override
     public void sendNotification(BacklogItem backlogItem) {
         notificationReadyForTesting(backlogItem);
         notificationBackToToDo(backlogItem);
+        notificationReadyForTestingToDoing(backlogItem);
+
+    }
+
+    private void notificationReadyForTestingToDoing(BacklogItem backlogItem) {
+        if (backlogItem.getBacklogItemPreviousState() instanceof ReadyForTesting && backlogItem.getCurrentState() instanceof Doing) {
+            filterUsers(backlogItem, ScrumMaster.class
+                    , "Hello Scrum Master! A Tester placed the backlog item: "
+                            + backlogItem.getTitle()
+                            + ". Please check it.");
+        }
 
     }
 
@@ -42,6 +51,8 @@ private NotificationBehaviour emailNotification = new EmailNotificationBehaviour
             }
         }
     }
+
+
 
 
 }

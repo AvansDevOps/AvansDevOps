@@ -11,8 +11,7 @@ public class PDFExportReport implements ExportReport{
 
     @Override
     public String toString() {
-        return "PDFExportReport{" +
-                "report=" + report +
-                '}';
+        return "PDFExportReport{" + "\n" +
+                report + "\n";
     }
 }

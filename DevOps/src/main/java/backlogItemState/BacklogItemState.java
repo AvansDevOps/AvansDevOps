@@ -14,7 +14,7 @@ public interface BacklogItemState {
 
     void done();
 
-    void getCurrentState();
+    BacklogItemState getCurrentState();
 
 
 

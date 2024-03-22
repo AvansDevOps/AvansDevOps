@@ -30,8 +30,8 @@ public class ToDo implements BacklogItemState{
         System.out.println("Moving backlog item to the Done state");
     }
 
-    public void getCurrentState() {
-        System.out.println("Backlog item is in the ToDo state");
+    public BacklogItemState getCurrentState() {
+        return this;
     }
 
 

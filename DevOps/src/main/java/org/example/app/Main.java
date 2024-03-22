@@ -107,7 +107,6 @@ public class Main {
         //backlogItem.unsubscribe(subscriber1);
         backlogItem.setState(new Done());
 
-        backlogItem.unsubscribe(subscriber1);
 
 
 

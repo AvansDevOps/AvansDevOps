@@ -1,7 +1,5 @@
 package backlogItemState;
 
-import backlogItemState.BacklogItemState;
-import backlogItemState.ToDo;
 import observers.Observable;
 import observers.Observer;
 import project.Activity;
@@ -20,19 +18,17 @@ public class BacklogItem implements Observable {
     private String description;
     private User user;
     private BacklogItemState state;
-
-    public Sprint getSprint() {
-        return sprint;
-    }
-
     private Sprint sprint;
-
 
     public BacklogItem(String title, String description, Sprint sprint) {
         this.title = title;
         this.description = description;
         this.sprint = sprint;
         state = new ToDo();
+    }
+
+    public Sprint getSprint() {
+        return sprint;
     }
 
     public void addThread(Thread thread) {
@@ -47,13 +43,20 @@ public class BacklogItem implements Observable {
         this.activities.add(activity);
     }
 
-    public void getCurrentState() {
-        state.getCurrentState();
+    public BacklogItemState getCurrentState() {
+        return state.getCurrentState();
     }
 
     // set states of the backlog item
 
     public void setState(BacklogItemState state) {
+        if (state instanceof Doing) {
+            if (this.state instanceof ToDo) {
+                this.state = state;
+            } else {
+                System.out.println("Backlog item is not in the correct state to move to Doing");
+            }
+        }
         this.state = state;
         notifyObservers();
     }
@@ -72,11 +75,8 @@ public class BacklogItem implements Observable {
     @Override
     public void notifyObservers() {
         // todo; send notification based on the state to the correct team members
-        if (state instanceof Done){
-            for (Observer observer : observers) {
-                observer.sendNotification(this, "Backlog item has finished!");
-            }
+        for (Observer observer : observers) {
+            observer.sendNotification(this);
         }
-
     }
 }

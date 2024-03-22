@@ -31,8 +31,9 @@ public class Done implements BacklogItemState {
         System.out.println("Backlog item is already in the Done state");
     }
 
-    public void getCurrentState() {
-        System.out.println("Backlog item is in the Done state");
+    public BacklogItemState getCurrentState() {
+
+        return this;
     }
 
 }

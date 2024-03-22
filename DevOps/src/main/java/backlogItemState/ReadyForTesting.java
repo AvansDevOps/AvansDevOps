@@ -30,7 +30,8 @@ public class ReadyForTesting implements BacklogItemState {
         System.out.println("Moving backlog item to the Done state");
     }
 
-    public void getCurrentState() {
+    public BacklogItemState getCurrentState() {
         System.out.println("Backlog item is in the Ready for Testing state");
+        return this;
     }
 }

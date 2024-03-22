@@ -26,8 +26,9 @@ public class Testing implements BacklogItemState {
         System.out.println("Moving backlog item to the Done state");
     }
 
-    public void getCurrentState() {
+    public BacklogItemState getCurrentState() {
         System.out.println("Backlog item is in the Testing state");
+        return this;
     }
 
 }

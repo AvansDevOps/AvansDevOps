@@ -12,7 +12,12 @@ import users.User;
 import java.util.List;
 
 public class Subscriber implements Observer {
-private NotificationBehaviour emailNotification = new EmailNotificationBehaviourAdapter(); // strategy pattern, email/slack/sms notification
+
+    private final NotificationBehaviour notificationBehaviour;// strategy pattern, email/slack/sms notification
+
+    public Subscriber(NotificationBehaviour notificationBehaviour){
+        this.notificationBehaviour = notificationBehaviour;
+    }
     @Override
     public void sendNotification(BacklogItem backlogItem) {
         notificationReadyForTesting(backlogItem);
@@ -47,12 +52,8 @@ private NotificationBehaviour emailNotification = new EmailNotificationBehaviour
         // filter users
         for (User user: backlogItem.getSprint().getTeamMembers()) {
             if (userClass.isInstance(user)) {
-                emailNotification.sendNotification(user, message);
+                notificationBehaviour.sendNotification(user, message);
             }
         }
     }
-
-
-
-
 }

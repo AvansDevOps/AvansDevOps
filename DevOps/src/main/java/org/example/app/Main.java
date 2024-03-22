@@ -34,15 +34,12 @@ public class Main {
         scrumMaster.createProject(project);
 
         //create a sprint
-        SprintRelease sprint = new SprintRelease("Sprint 1", null, null);
-        sprint.setStartDate(LocalDate.now());
-        sprint.setEndDate(LocalDate.now().plusDays(7));
-
+        SprintRelease sprint = new SprintRelease("Sprint 1", LocalDate.now(), LocalDate.now().plusDays(7));
         // Scrum master creating a sprint for this project
         scrumMaster.createSprintRelease(project, sprint);
 
         // editing sprint data
-        scrumMaster.editSprint(sprint, "Sprint edited! whaow!", LocalDate.now(), LocalDate.now().plusDays(14));
+       // scrumMaster.editSprint(sprint, "Sprint edited! whaow!", LocalDate.now(), LocalDate.now().plusDays(14));
 
 
 
@@ -94,11 +91,9 @@ public class Main {
 
 
         // generating a report Factory pattern
-        Report report = new Report("Sprint 1 report", 1.0, LocalDate.now(), sprint);
-        report.generateReport(FileType.PDF);
-        report.generateReport(FileType.PNG);
+        scrumMaster.generateReport(FileType.PNG,"Sprint 1 report",  LocalDate.now(), sprint);
 
-        System.out.println("\n \n");
+        System.out.println("\n");
 
 
         // generating a forum thread comment

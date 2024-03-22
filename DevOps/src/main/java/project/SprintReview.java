@@ -1,5 +1,7 @@
 package project;
 
+import reports.Report;
+
 import java.time.LocalDate;
 
 public class SprintReview extends Sprint{
@@ -10,5 +12,11 @@ public class SprintReview extends Sprint{
 
     public void createReview(){
         System.out.println("Review created");
+    }
+
+
+    // close sprint
+    public void closeSprint(){
+        System.out.println("Sprint closed");
     }
 }

@@ -3,6 +3,8 @@ package users;
 import project.Project;
 import project.Sprint;
 import project.SprintReview;
+import reports.FileType;
+import reports.Report;
 import sprintRelease.SprintRelease;
 
 import java.time.LocalDate;
@@ -12,6 +14,7 @@ import java.util.List;
 public class ScrumMaster extends User{
 
     private List<Project> projects;
+    private Report report;
 
 
     public ScrumMaster(String name, String email) {
@@ -53,9 +56,18 @@ public class ScrumMaster extends User{
         }
     }
 
-    public void cancelSprint(Sprint sprint) {
-        sprint.cancelSprint();
+    public void generateReport(FileType fileType, String sprintName, LocalDate date , Sprint sprint) {
+        report = new Report(sprintName, 1.0, date, sprint);
+        report.generateReport(fileType);
+
     }
+
+
+
+    public void setSprintStatus(Sprint sprint, boolean isFinished) {
+        sprint.setSprintStatus(isFinished);
+    }
+
 
     public void addTeamMembers(Sprint sprint, User user) {
         sprint.inviteTeamMembers(user);

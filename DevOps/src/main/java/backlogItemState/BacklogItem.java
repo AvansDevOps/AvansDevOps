@@ -53,6 +53,10 @@ public class BacklogItem implements Observable {
     // set states of the backlog item
 
     public void setState(BacklogItemState newState) {
+        if (sprint.isFinished()) {
+            System.out.println("Sprint is finished, you can't change the state of the backlog item");
+            return;
+        }
         if (sprint instanceof SprintRelease) {
             SprintRelease sprintRelease = (SprintRelease) sprint;
             if (sprintRelease.threadIsRunning()) {

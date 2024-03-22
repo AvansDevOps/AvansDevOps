@@ -5,47 +5,38 @@ import users.User;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public abstract class Sprint {
     private String name;
     private LocalDate startDate;
     private LocalDate endDate;
     private List<User> teamMembers;
+    private boolean isFinished;
+    private Timer timer;
 
     public List<User> getTeamMembers() {
         return teamMembers;
     }
+
 
     public Sprint(String name, LocalDate startDate, LocalDate endDate) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
         this.teamMembers = new ArrayList<>();
+        this.isFinished = false;
+        timer = new Timer();
+        startChecking();
     }
     public Sprint(String name) {
         this.name = name;
     }
 
-    public void isFinished(){
-        if (LocalDate.now().isAfter(endDate)){
-            System.out.println("Sprint is finished");
-        } else {
-            System.out.println("Sprint is not finished");
-        }
-    }
-
-    public void cancelSprint(){
-        // todo; Notification to related team members and find a way to make this readONly?
-    }
-
     public void inviteTeamMembers(User user){
         this.teamMembers.add(user);
     }
-
-
-
-
-
     public LocalDate getStartDate() {
         return startDate;
     }
@@ -81,7 +72,29 @@ public abstract class Sprint {
         this.endDate = endDate;
     }
 
+    public void setSprintStatus(boolean isFinished) {
+        this.isFinished = isFinished;
+    }
 
+    public boolean isFinished(){
+        return isFinished;
+    }
+
+
+
+    public void startChecking(){
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                // This code will be executed every 100000 seconds
+                if (LocalDate.now().isAfter(endDate)) {
+                    System.out.println("The deadline has passed!");
+                    timer.cancel(); // Stop the timer
+                } else {
+                   // System.out.println("The deadline has not passed yet.");
+                }
+            }
+        }, 0, 100000);
+    }
 
     @Override
     public String toString() {

@@ -18,6 +18,10 @@ public class Forum {
 
 
     public void addThread(Thread thread) {
+        if (sprint.isFinished()) {
+            System.out.println("Sprint is finished, you can't add a thread to the forum");
+            return;
+        }
         threads.add(thread);
     }
 

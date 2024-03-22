@@ -9,6 +9,7 @@ public class SprintRelease extends Sprint {
     private Visitor visitor;
     private Thread deploymentThread;
 
+
     public SprintRelease(String name, LocalDate startDate, LocalDate endDate) {
         super(name, startDate, endDate);
     }
@@ -30,8 +31,6 @@ public class SprintRelease extends Sprint {
                 this.deploymentThread = null;
             }
         });
-
-
     }
 
     public void cancelDeployment() {

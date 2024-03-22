@@ -78,10 +78,10 @@ public class Main {
         sprint.addComponent(mainFolder);
         sprint.addVisitor(visitor);
 
-        // deploying the project (sprintRelease)®
-        //sprint.deployProject();
-//        sprint.deployProject();
-//        sprint.cancelDeployment();
+        // deploying the project (sprintRelease)
+        sprint.deployProject();
+
+        sprint.cancelDeployment();
 
 
 
@@ -153,6 +153,10 @@ public class Main {
 
         //setting state of backlogItem
         backlogItem.setState(new Done());
+
+        Observer subscriberOnDeployment = new Subscriber(new EmailNotificationBehaviourAdapter());
+        sprint.subscribe(subscriberOnDeployment);
+
 
 
 

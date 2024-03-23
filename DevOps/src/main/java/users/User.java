@@ -34,6 +34,10 @@ public abstract class User {
         this.email = email;
     }
 
+    public List<Sprint> getSprints(){
+        return sprints;
+    }
+
     @Override
     public String toString() {
         return this.name + ": " + this.getClass().getSimpleName();

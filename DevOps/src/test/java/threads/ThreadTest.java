@@ -37,6 +37,19 @@ public class ThreadTest {
     }
 
     @Test
+    public void testAddCommentToInactiveThread(){
+        // Arrange
+        Thread thread = new Thread("Thread A", "Content A");
+        User user = new Developer("John", "john@example.com");
+        String commentText = "Comment A";
+        Comment comment = new Comment(commentText, user);
+        thread.deactivateThread();
+
+        // Act & Assert
+        assertThrows(IllegalStateException.class, () -> thread.addComment(comment));
+    }
+
+    @Test
     public void testRemoveComment(){
         // Arrange
         Thread thread = new Thread("Thread A", "Content A");
@@ -51,5 +64,18 @@ public class ThreadTest {
         // Assert
         assertFalse(thread.toString().contains(comment.toString()));
     }
-    
+
+    @Test
+    public void testRemoveCommentFromInactiveThread(){
+        // Arrange
+        Thread thread = new Thread("Thread A", "Content A");
+        User user = new Developer("John", "john@example.com");
+        String commentText = "Comment A";
+        Comment comment = new Comment(commentText, user);
+        thread.addComment(comment);
+        thread.deactivateThread();
+
+        // Act & Assert
+        assertThrows(IllegalStateException.class, () -> thread.removeComment(comment));
+    }
 }

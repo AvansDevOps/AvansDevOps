@@ -11,7 +11,7 @@ import users.User;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BacklogItem implements Observable {
+public class BacklogItem implements Observable, Comparable<BacklogItem> {
     private List<Thread> thread;
     private List<Activity> activities;
     private List<Observer> observers = new ArrayList<>();
@@ -97,5 +97,10 @@ public class BacklogItem implements Observable {
 
     public String getTitle() {
         return title;
+    }
+
+    @Override
+    public int compareTo(BacklogItem other) {
+        return this.title.compareTo(other.title);
     }
 }

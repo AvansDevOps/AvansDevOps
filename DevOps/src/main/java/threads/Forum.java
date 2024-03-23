@@ -15,13 +15,9 @@ public class Forum {
         this.threads = new ArrayList<>();
     }
 
-
-
     public void addThread(Thread thread) {
-        if (sprint.isFinished()) {
-            System.out.println("Sprint is finished, you can't add a thread to the forum");
-            return;
-        }
+        if (sprint.isFinished()) throw new IllegalStateException("Sprint is finished");
+
         threads.add(thread);
     }
 

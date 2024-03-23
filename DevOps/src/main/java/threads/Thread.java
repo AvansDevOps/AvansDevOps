@@ -26,6 +26,16 @@ public class Thread {
         comments.remove(comment);
     }
 
+    public void activateThread() {
+        isActive = true;
+
+    }
+
+    public void deactivateThread() {
+        isActive = false;
+
+    }
+
     @Override
     public String toString() {
         return "Thread: " + title + "\n" +

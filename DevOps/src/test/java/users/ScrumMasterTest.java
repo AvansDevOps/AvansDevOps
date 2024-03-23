@@ -30,17 +30,6 @@ public class ScrumMasterTest {
     }
 
     @Test
-    public void testLead() {
-        // Arrange
-        ScrumMaster scrumMaster = new ScrumMaster("John", "john@example.com");
-
-        // Act
-        scrumMaster.lead();
-
-        // No assertions, just ensure that the method executes without errors
-    }
-
-    @Test
     public void testCreateProjectWithNameAndDescription() {
         // Arrange
         ScrumMaster scrumMaster = new ScrumMaster("John", "john@example.com");

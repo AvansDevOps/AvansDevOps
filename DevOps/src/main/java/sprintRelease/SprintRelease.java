@@ -23,7 +23,7 @@ public class SprintRelease extends Sprint {
             try {
                 deploymentThread.start();
                 System.out.println(this.deploymentThread.getState());
-                deploymentThread.wait(500);
+//                deploymentThread.wait(500);
                 this.component.acceptVisitor(this.visitor);
                 System.out.println("Project has been deployed successfully!" + "\n \n");
             } catch (Exception e) {

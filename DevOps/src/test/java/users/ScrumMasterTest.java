@@ -28,6 +28,25 @@ public class ScrumMasterTest {
         assertNotNull(scrumMaster.getProjects());
         assertTrue(scrumMaster.getProjects().isEmpty());
     }
+    @Test
+    public void testCreateProject(){
+        // Arrange
+        ScrumMaster scrumMaster = new ScrumMaster("John", "john@example.com");
+        String projectName = "Project A";
+        String projectDescription = "This is Project A";
+        Project testProject = new Project(projectName, projectDescription);
+
+        // Act
+        scrumMaster.createProject(testProject);
+
+        // Assert
+        List<Project> projects = scrumMaster.getProjects();
+        assertFalse(projects.isEmpty());
+        assertEquals(1, projects.size());
+        Project project = projects.get(0);
+        assertEquals(projectName, project.getName());
+        assertEquals(projectDescription, project.getDescription());
+    }
 
     @Test
     public void testCreateProjectWithNameAndDescription() {
@@ -48,35 +67,33 @@ public class ScrumMasterTest {
         assertEquals(projectDescription, project.getDescription());
     }
 
-    //TODO Niet te checken??
     @Test
     public void testCreateSprintReview() {
         // Arrange
         ScrumMaster scrumMaster = new ScrumMaster("John", "john@example.com");
         Project project = new Project("Project A", "This is Project A");
         SprintReview sprintReview = new SprintReview("Review A", LocalDate.now(), LocalDate.now());
-
+        scrumMaster.createProject(project);
         // Act
         scrumMaster.createSprint(project, sprintReview);
 
         // Assert
-//        assertEquals(1, project.getSprintReviews().size());
-//        assertEquals(sprintReview, project.getSprintReviews().get(0));
+        assertEquals(1, project.getBacklog().getSprints().size());
+        assertEquals(sprintReview, project.getBacklog().getSprints().get(0));
     }
 
-    //TODO Niet te checken??
     @Test
     public void testCreateSprintRelease() {
         // Arrange
         ScrumMaster scrumMaster = new ScrumMaster("John", "john@example.com");
         Project project = new Project("Project A", "This is Project A");
         SprintRelease sprintRelease = new SprintRelease("Release A", LocalDate.now(), LocalDate.now());
-
+        scrumMaster.createProject(project);
         // Act
         scrumMaster.createSprint(project, sprintRelease);
 
         // Assert
-//        assertEquals(1, project.getSprintReleases().size());
-//        assertEquals(sprintRelease, project.getSprintReleases().get(0));
+        assertEquals(1, project.getBacklog().getSprints().size());
+        assertEquals(sprintRelease, project.getBacklog().getSprints().get(0));
     }
 }

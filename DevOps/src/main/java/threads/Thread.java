@@ -8,25 +8,12 @@ public class Thread {
     private String title;
     private String content;
     private boolean isActive;
-    
-
 
     public Thread(String title, String content) {
         this.title = title;
         this.content = content;
         this.comments = new ArrayList<>();
         this.isActive = true;
-    }
-
-
-    public void activateThread() {
-        isActive = true;
-
-    }
-
-    public void deactivateThread() {
-        isActive = false;
-
     }
 
     public void addComment(Comment comment) {

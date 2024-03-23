@@ -22,10 +22,6 @@ public class ScrumMaster extends User{
         this.projects = new ArrayList<>();
     }
 
-    public void lead() {
-        System.out.println("Leading the team");
-    }
-
     public void createProject(String name, String description) {
         projects.add(new Project(name, description));
     }
@@ -46,8 +42,6 @@ public class ScrumMaster extends User{
         report = new Report(sprintName, 1.0, date, sprint);
         report.generateReport(fileType);
     }
-
-
 
     public void setSprintStatus(Sprint sprint, boolean isFinished) {
         sprint.setSprintStatus(isFinished);

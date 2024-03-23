@@ -34,16 +34,11 @@ public class ScrumMaster extends User{
         projects.add(project);
     }
 
-
-
-
-
     public void createSprintReview(Project projectName, SprintReview sprintReview) {
         for ( Project project : this.projects){
             if (project == projectName){
                 new SprintReview(sprintReview.getName(), sprintReview.getStartDate(), sprintReview.getEndDate());
             }
-
         }
     }
 
@@ -52,14 +47,12 @@ public class ScrumMaster extends User{
             if (project == projectName){
                 new SprintRelease(sprintRelease.getName(), sprintRelease.getStartDate(), sprintRelease.getEndDate());
             }
-
         }
     }
 
     public void generateReport(FileType fileType, String sprintName, LocalDate date , Sprint sprint) {
         report = new Report(sprintName, 1.0, date, sprint);
         report.generateReport(fileType);
-
     }
 
 
@@ -68,6 +61,9 @@ public class ScrumMaster extends User{
         sprint.setSprintStatus(isFinished);
     }
 
+    public List<Project> getProjects(){
+        return projects;
+    }
 
     public void addTeamMembers(Sprint sprint, User user) {
         sprint.inviteTeamMembers(user);
@@ -76,8 +72,4 @@ public class ScrumMaster extends User{
     public void editSprint(Sprint sprint, String name, LocalDate startDate, LocalDate endDate) {
         sprint.editSprint(name, startDate, endDate);
     }
-
-
-
-
 }

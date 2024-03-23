@@ -68,7 +68,7 @@ public class ScrumMasterTest {
         SprintReview sprintReview = new SprintReview("Review A", LocalDate.now(), LocalDate.now());
 
         // Act
-        scrumMaster.createSprintReview(project, sprintReview);
+        scrumMaster.createSprint(project, sprintReview);
 
         // Assert
 //        assertEquals(1, project.getSprintReviews().size());
@@ -84,7 +84,7 @@ public class ScrumMasterTest {
         SprintRelease sprintRelease = new SprintRelease("Release A", LocalDate.now(), LocalDate.now());
 
         // Act
-        scrumMaster.createSprintRelease(project, sprintRelease);
+        scrumMaster.createSprint(project, sprintRelease);
 
         // Assert
 //        assertEquals(1, project.getSprintReleases().size());

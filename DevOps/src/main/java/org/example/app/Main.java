@@ -36,7 +36,7 @@ public class Main {
         //create a sprint
         SprintRelease sprint = new SprintRelease("Sprint 1", LocalDate.now(), LocalDate.now().plusDays(7));
         // Scrum master creating a sprint for this project
-        scrumMaster.createSprintRelease(project, sprint);
+        scrumMaster.createSprint(project, sprint);
 
         // editing sprint data
        // scrumMaster.editSprint(sprint, "Sprint edited! whaow!", LocalDate.now(), LocalDate.now().plusDays(14));

@@ -34,18 +34,10 @@ public class ScrumMaster extends User{
         projects.add(project);
     }
 
-    public void createSprintReview(Project projectName, SprintReview sprintReview) {
+    public void createSprint(Project projectName, Sprint sprint) {
         for ( Project project : this.projects){
             if (project == projectName){
-                new SprintReview(sprintReview.getName(), sprintReview.getStartDate(), sprintReview.getEndDate());
-            }
-        }
-    }
-
-    public void createSprintRelease(Project projectName, SprintRelease sprintRelease) {
-        for ( Project project : this.projects){
-            if (project == projectName){
-                new SprintRelease(sprintRelease.getName(), sprintRelease.getStartDate(), sprintRelease.getEndDate());
+                project.getBacklog().addSprint(sprint);
             }
         }
     }

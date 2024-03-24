@@ -74,6 +74,7 @@ public class TestSubscriber {
         // Act
         backlogItem.setState(new ReadyForTesting());
         backlogItem.setState(new Doing());
+        backlogItem.unsubscribe(observer);
         // Assert
         String expectedOutput = "Email notification sent to John: Hello Scrum Master! A Tester placed the backlog item: Title A. Please check it.";
         assertTrue(outContent.toString().contains(expectedOutput));

@@ -28,6 +28,7 @@ public class BacklogItem implements Observable, Comparable<BacklogItem> {
         this.sprint = sprint;
         this.activities = new ArrayList<>();
         state = new ToDo();
+        this.thread = new ArrayList<>();
     }
 
     public Sprint getSprint() {
@@ -97,6 +98,14 @@ public class BacklogItem implements Observable, Comparable<BacklogItem> {
 
     public String getTitle() {
         return title;
+    }
+
+    public List<Thread> getThreads() {
+        return thread;
+    }
+
+    public List<Activity> getActivities() {
+        return activities;
     }
 
     @Override

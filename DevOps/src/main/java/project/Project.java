@@ -12,16 +12,6 @@ public class Project {
         this.backlog = new Backlog();
     }
 
-    public void setBacklog(Backlog backlog) {
-        if (backlog == null) {
-            throw new IllegalArgumentException("Backlog cannot be null");
-        } else if (this.backlog != null) {
-            throw new IllegalArgumentException("Backlog allready set!");
-        } else {
-            this.backlog = backlog;
-        }
-    }
-
     public Backlog getBacklog() {
         return backlog;
     }

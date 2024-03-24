@@ -18,19 +18,40 @@ public class SprintRelease extends Sprint {
 
 
     public void deployProject() {
-        deploymentThread = new Thread(() -> {
-            System.out.println("Project pipeline is in progress and will be deployed soon:");
-            try {
-                deploymentThread.start();
-                System.out.println(this.deploymentThread.getState());
+        if (this.component == null) {
+            System.out.println("Error: " + "No component has been added to the project" + "\n \n");
+            return;
+        }
+        if (this.visitor == null) {
+            System.out.println("Error: " + "No visitor has been added to the project" + "\n \n");
+            return;
+        }
+
+        this.deploymentThread = new Thread();
+        this.deploymentThread.start();
+        System.out.println("Project pipeline is in progress and will be deployed soon:");
+        try {
+            //                deploymentThread.wait(500);
+            this.component.acceptVisitor(this.visitor);
+            System.out.println("Project has been deployed successfully!" + "\n \n");
+        } catch (Exception e) {
+            System.out.println("Error: " + "Pipeline progress has been cancelled" + "\n \n");
+            this.deploymentThread = null;
+        }
+
+//        deploymentThread = new Thread(() -> {
+//            System.out.println("Project pipeline is in progress and will be deployed soon:");
+//            try {
+//                deploymentThread.start();
+//                System.out.println(this.deploymentThread.getState());
 //                deploymentThread.wait(500);
-                this.component.acceptVisitor(this.visitor);
-                System.out.println("Project has been deployed successfully!" + "\n \n");
-            } catch (Exception e) {
-                System.out.println("Error: " + "Pipeline progress has been cancelled" + "\n \n");
-                this.deploymentThread = null;
-            }
-        });
+//                this.component.acceptVisitor(this.visitor);
+//                System.out.println("Project has been deployed successfully!" + "\n \n");
+//            } catch (Exception e) {
+//                System.out.println("Error: " + "Pipeline progress has been cancelled" + "\n \n");
+//                this.deploymentThread = null;
+//            }
+//        });
     }
 
     public void cancelDeployment() {

@@ -67,12 +67,12 @@ public class Main {
 
             Folder packagesFolder = new Folder("Packages folder");
                 Folder libraryMail = new Folder("Library mail");
-                    Command sendMail = new Command("Send mail", "This will send a mail", "send mail.exe");
+                    Command sendMail = new Command("EmailLibrary", "This will send a mail", "send mail.exe");
                         libraryMail.addComponent(sendMail);
                         packagesFolder.addComponent(libraryMail);
 
                 Folder librarySMS = new Folder("Library SMS");
-                    Command sendSMS = new Command("Send SMS", "This will send a SMS", "send SMS.exe");
+                    Command sendSMS = new Command("SMSLibrary", "This will send a SMS", "send SMS.exe");
                         librarySMS.addComponent(sendSMS);
                         packagesFolder.addComponent(librarySMS);
 
@@ -93,8 +93,8 @@ public class Main {
         sprint.addVisitor(visitor);
 
         // deploying the project (sprintRelease)®
-        //sprint.deployProject();
-//        sprint.deployProject();
+        sprint.deployProject();
+
 //        sprint.cancelDeployment();
 
 

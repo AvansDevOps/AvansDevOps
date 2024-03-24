@@ -65,9 +65,9 @@ public class BacklogItem implements Observable, Comparable<BacklogItem> {
             }
         }
 
-        if (this.BacklogItemPreviousState != null){
+//        if (this.BacklogItemPreviousState != null){
             this.BacklogItemPreviousState = this.state;
-        }
+//        }
         this.state = newState;
         notifyObservers();
     }

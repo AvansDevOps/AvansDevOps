@@ -41,25 +41,12 @@ public abstract class Sprint {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
     public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public void editSprint(String name, LocalDate startDate, LocalDate endDate) {
@@ -79,8 +66,6 @@ public abstract class Sprint {
     public boolean isFinished(){
         return isFinished;
     }
-
-
 
     public void startChecking(){
         timer.scheduleAtFixedRate(new TimerTask() {

@@ -13,15 +13,15 @@ public class EmailNotificationBehaviourAdapter implements NotificationBehaviour 
         System.out.println("Email notification sent to " + receiver.getName() + ": " + message);
     }
 
-    private void transformData(User receiver, String message) {
-        this.name = receiver.getName();
-        this.message = message;
-        this.receiver = receiver;
-        this.email = "RandomGenEmail@Gmail.com";
-    }
-
-    private void sendSlack() {
-        // method to third party service
-        System.out.println("Sending mail notification to " + this.name + " with email " + this.email + " with message: " + this.message);
-    }
+//    private void transformData(User receiver, String message) {
+//        this.name = receiver.getName();
+//        this.message = message;
+//        this.receiver = receiver;
+//        this.email = "RandomGenEmail@Gmail.com";
+//    }
+//
+//    private void sendSlack() {
+//        // method to third party service
+//        System.out.println("Sending mail notification to " + this.name + " with email " + this.email + " with message: " + this.message);
+//    }
 }

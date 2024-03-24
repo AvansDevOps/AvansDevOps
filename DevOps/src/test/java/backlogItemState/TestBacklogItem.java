@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import project.Activity;
 import project.Sprint;
 import project.SprintReview;
+import sprintRelease.SprintRelease;
 import threads.Thread;
 
 import java.time.LocalDate;
@@ -17,6 +18,17 @@ public class TestBacklogItem {
     public void testChangeBacklogState(){
         // Arrange
         Sprint sprint = new SprintReview("Sprint A", LocalDate.now(), LocalDate.now());
+        BacklogItem backlogItem = new BacklogItem("Title A", "Description A", sprint);
+        // Act
+        backlogItem.setState(new Doing());
+        // Assert
+        assertInstanceOf(Doing.class, backlogItem.getCurrentState());
+    }
+
+    @Test
+    public void testChangeBacklogStateReleaseSprint(){
+        // Arrange
+        Sprint sprint = new SprintRelease("Sprint A", LocalDate.now(), LocalDate.now());
         BacklogItem backlogItem = new BacklogItem("Title A", "Description A", sprint);
         // Act
         backlogItem.setState(new Doing());

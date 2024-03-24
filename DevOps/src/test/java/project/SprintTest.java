@@ -43,5 +43,4 @@ public class SprintTest {
         Thread.sleep(1);
         assertTrue(outContent.toString().contains(expectedOutput));
     }
-
 }

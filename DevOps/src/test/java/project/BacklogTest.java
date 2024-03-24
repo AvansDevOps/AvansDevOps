@@ -1,13 +1,16 @@
 package project;
 
 import backlogItemState.BacklogItem;
+import backlogItemState.ToDo;
 import org.junit.jupiter.api.Test;
 import sprintRelease.SprintRelease;
+import users.Developer;
+import users.User;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BacklogTest {
 
@@ -25,5 +28,30 @@ public class BacklogTest {
         // Assert
         assertEquals(2, result.size());
         assertEquals("Title1", result.get(0).getTitle());
+    }
+
+    @Test
+    public void testCreateBacklogItem(){
+        // Arrange
+        Sprint sprint = new SprintReview("Title A", LocalDate.now(), LocalDate.now());
+        // Act
+        BacklogItem backlogItem = new BacklogItem("Title A", "Description A", sprint);
+        // Assert
+        assertNotNull(backlogItem);
+        assertEquals("Title A", backlogItem.getTitle());
+        assertEquals(sprint, backlogItem.getSprint());
+        assertInstanceOf(ToDo.class, backlogItem.getCurrentState());
+    }
+
+    @Test
+    public void testAddUserToBacklogItem(){
+        // Arrange
+        Sprint sprint = new SprintReview("Title A", LocalDate.now(), LocalDate.now());
+        BacklogItem backlogItem = new BacklogItem("Title A", "Description A", sprint);
+        User user = new Developer("John", "john@example.com");
+        // Act
+        backlogItem.setUser(user);
+        // Assert
+        assertNotNull(backlogItem);
     }
 }

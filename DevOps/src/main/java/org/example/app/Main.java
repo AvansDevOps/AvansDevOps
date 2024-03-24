@@ -56,18 +56,34 @@ public class Main {
 
         // Composite pattern > folder structure
         Folder mainFolder = new Folder("Deployment folder");
-        Folder testFolder = new Folder("Test folder");
-        Command runningUnitTests = new Command("Running unit tests", "This will run all unit tests inside AvansOps", "run tests.exe");
 
-        Folder buildFolder = new Folder("Build folder");
-        Command buildProject = new Command("Building project", "This will build the project", "build project.exe");
+            Folder testFolder = new Folder("Test folder");
+                Command runningUnitTests = new Command("Running unit tests", "This will run all unit tests inside AvansOps", "run tests.exe");
+                    testFolder.addComponent(runningUnitTests);
 
+            Folder buildFolder = new Folder("Build folder");
+                Command buildProject = new Command("Building project", "This will build the project", "build project.exe");
+                    buildFolder.addComponent(buildProject);
+
+            Folder packagesFolder = new Folder("Packages folder");
+                Folder libraryMail = new Folder("Library mail");
+                    Command sendMail = new Command("Send mail", "This will send a mail", "send mail.exe");
+                        libraryMail.addComponent(sendMail);
+                        packagesFolder.addComponent(libraryMail);
+
+                Folder librarySMS = new Folder("Library SMS");
+                    Command sendSMS = new Command("Send SMS", "This will send a SMS", "send SMS.exe");
+                        librarySMS.addComponent(sendSMS);
+                        packagesFolder.addComponent(librarySMS);
 
         mainFolder.addComponent(testFolder);
-        testFolder.addComponent(runningUnitTests);
-
         mainFolder.addComponent(buildFolder);
-        buildFolder.addComponent(buildProject);
+        mainFolder.addComponent(packagesFolder);
+
+
+
+
+
 
         // visitor pattern
         VisitorStartDeployment visitor = new VisitorStartDeployment();

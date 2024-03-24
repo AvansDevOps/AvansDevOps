@@ -30,15 +30,9 @@ public abstract class Sprint {
         timer = new Timer();
         startChecking();
     }
-    public Sprint(String name) {
-        this.name = name;
-    }
 
     public void inviteTeamMembers(User user){
         this.teamMembers.add(user);
-    }
-    public LocalDate getStartDate() {
-        return startDate;
     }
 
     public LocalDate getEndDate() {

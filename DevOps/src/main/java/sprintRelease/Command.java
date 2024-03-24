@@ -17,27 +17,6 @@ public class Command extends Component {
         this.status = "Finished";
     }
 
-    public void execute() {
-        System.out.println("Executing command: " + command);
-        // Execute command
-        // Set output, error and status
-        output = "Output of command";
-        error = "Error of command";
-        status = "Status of command";
-    }
-
-    public String getOutput() {
-        return output;
-    }
-
-    public String getError() {
-        return error;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
     @Override
     public String toString() {
         return "Command{" +

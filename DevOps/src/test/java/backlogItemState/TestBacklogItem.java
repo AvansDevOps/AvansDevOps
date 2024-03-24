@@ -1,7 +1,5 @@
-package BacklogItemState;
+package backlogItemState;
 
-import backlogItemState.BacklogItem;
-import backlogItemState.Doing;
 import org.junit.jupiter.api.Test;
 import project.Sprint;
 import project.SprintReview;
@@ -23,6 +21,4 @@ public class TestBacklogItem {
         // Assert
         assertInstanceOf(Doing.class, backlogItem.getCurrentState());
     }
-
-
 }

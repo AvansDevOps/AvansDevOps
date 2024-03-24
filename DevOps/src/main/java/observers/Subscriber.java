@@ -23,7 +23,6 @@ public class Subscriber implements Observer {
         notificationReadyForTesting(backlogItem);
         notificationBackToToDo(backlogItem);
         notificationReadyForTestingToDoing(backlogItem);
-
     }
 
     private void notificationReadyForTestingToDoing(BacklogItem backlogItem) {
@@ -33,7 +32,6 @@ public class Subscriber implements Observer {
                             + backlogItem.getTitle()
                             + ". Please check it.");
         }
-
     }
 
     private void notificationReadyForTesting(BacklogItem backlogItem) {

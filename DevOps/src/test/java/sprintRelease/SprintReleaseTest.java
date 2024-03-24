@@ -1,13 +1,7 @@
-package SprintRelease;
+package sprintRelease;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import project.Sprint;
-import sprintRelease.Command;
-import sprintRelease.Folder;
-import sprintRelease.SprintRelease;
-import sprintRelease.VisitorStartDeployment;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

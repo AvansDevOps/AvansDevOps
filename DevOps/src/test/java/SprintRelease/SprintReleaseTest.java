@@ -19,8 +19,7 @@ public class SprintReleaseTest {
 
     ByteArrayOutputStream outContent;
 
-    private void createComponentVisitor(SprintRelease sprint){
-
+    private void createComponent(SprintRelease sprint){
         // Composite pattern > folder structure
         Folder mainFolder = new Folder("Deployment folder");
 
@@ -47,11 +46,14 @@ public class SprintReleaseTest {
         mainFolder.addComponent(buildFolder);
         mainFolder.addComponent(packagesFolder);
 
+        sprint.addComponent(mainFolder);
+    }
+
+    private void createVisitor(SprintRelease sprint){
         // visitor pattern
         VisitorStartDeployment visitor = new VisitorStartDeployment();
 
         //creating a base component for the composite pattern
-        sprint.addComponent(mainFolder);
         sprint.addVisitor(visitor);
     }
 
@@ -65,7 +67,8 @@ public class SprintReleaseTest {
     public void testDeployProject(){
         // Arrange
         SprintRelease sprint = new SprintRelease("Sprint A", LocalDate.now(), LocalDate.now());
-        createComponentVisitor(sprint);
+        createComponent(sprint);
+        createVisitor(sprint);
         // Act
         sprint.deployProject();
         // Assert
@@ -82,10 +85,23 @@ public class SprintReleaseTest {
     public void testDeployNoComponent(){
         // Arrange
         SprintRelease sprint = new SprintRelease("Sprint A", LocalDate.now(), LocalDate.now());
+        createVisitor(sprint);
         // Act
         sprint.deployProject();
         // Assert
         String expectedOutput = "Error: No component has been added to the project\n \n\n";
+        assertEquals(expectedOutput, outContent.toString());
+    }
+
+    @Test
+    public void testDeployNoVisitor(){
+        // Arrange
+        SprintRelease sprint = new SprintRelease("Sprint A", LocalDate.now(), LocalDate.now());
+        createComponent(sprint);
+        // Act
+        sprint.deployProject();
+        // Assert
+        String expectedOutput = "Error: No visitor has been added to the project\n \n\n";
         assertEquals(expectedOutput, outContent.toString());
     }
 }

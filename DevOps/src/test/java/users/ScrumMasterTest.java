@@ -95,7 +95,7 @@ public class ScrumMasterTest {
         scrumMaster.createProject(project);
         // Act
         scrumMaster.createSprint(project, sprintRelease);
-
+        System.out.println(project);
         // Assert
         assertEquals(1, project.getBacklog().getSprints().size());
         assertEquals(sprintRelease, project.getBacklog().getSprints().get(0));

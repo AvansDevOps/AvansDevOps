@@ -31,7 +31,7 @@ public class SprintRelease extends Sprint {
         this.deploymentThread.start();
         System.out.println("Project pipeline is in progress and will be deployed soon:");
         try {
-            deploymentThread.wait(500);
+//            deploymentThread.wait(500);
             this.component.acceptVisitor(this.visitor);
             System.out.println("Project has been deployed successfully!" + "\n \n");
         } catch (Exception e) {

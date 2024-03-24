@@ -2,9 +2,13 @@ package users;
 
 import org.junit.jupiter.api.Test;
 import project.Project;
+import project.Sprint;
 import project.SprintReview;
+import reports.FileType;
 import sprintRelease.SprintRelease;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -95,5 +99,46 @@ public class ScrumMasterTest {
         // Assert
         assertEquals(1, project.getBacklog().getSprints().size());
         assertEquals(sprintRelease, project.getBacklog().getSprints().get(0));
+    }
+
+    @Test
+    public void testGenerateReportPNG() {
+        // Arrange
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        generateReport(FileType.PNG);
+        // Assert
+        String expectedOutput = "Report is being generated\n" +
+                "Exporting report as PNG\n" +
+                "Report: reportName='Sprint 1 report'\n" +
+                "version=1.0\n" +
+                "date=2024-03-24\n" +
+                "sprint=Sprint{name='Sprint A', startDate=2024-03-24, endDate=2024-03-24, teamMembers=[]}";
+        assertTrue(outContent.toString().contains(expectedOutput));
+    }
+
+    @Test
+    public void testGenerateReportPDF() {
+        // Arrange
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        generateReport(FileType.PDF);
+        // Assert
+        String expectedOutput = "Report is being generated\n" +
+                "Exporting report as PDF \n" +
+                "PDFExportReport{\n" +
+                "Report: reportName='Sprint 1 report'\n" +
+                "version=1.0\n" +
+                "date=2024-03-24\n" +
+                "sprint=Sprint{name='Sprint A', startDate=2024-03-24, endDate=2024-03-24, teamMembers=[]}\n";
+        assertTrue(outContent.toString().contains(expectedOutput));
+    }
+
+    private void generateReport(FileType type){
+        // Arrange
+        ScrumMaster scrumMaster = new ScrumMaster("John", "john@example.com");
+        Sprint sprint = new SprintReview("Sprint A", LocalDate.now(), LocalDate.now());
+        // Act
+        scrumMaster.generateReport(type, "Sprint 1 report", LocalDate.now(), sprint);
     }
 }
